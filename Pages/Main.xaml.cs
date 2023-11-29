@@ -24,6 +24,7 @@ namespace Documents_Тепляков.Pages
         public Main()
         {
             InitializeComponent();
+            CreateUI();
         }
 
         public void CreateUI()

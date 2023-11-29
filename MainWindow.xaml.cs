@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Documents_Тепляков.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,26 @@ namespace Documents_Тепляков
     public partial class MainWindow : Window
     {
         public static MainWindow init;
+        public List<DocumentContext> AllDocuments = new List<DocumentContext>().AllDocuments();
+
         public MainWindow()
         {
             InitializeComponent();
             init = this;
+            OpenPage(pages.main);
+        }
+
+        public enum pages
+        {
+            main, add
+        }
+
+        public void OpenPage(pages _pages)
+        {
+            if (_pages == pages.main)
+                frame.Navigate(new Pages.Main());
+            if (_pages == pages.add)
+                frame.Navigate(new Pages.Add());
         }
     }
 }

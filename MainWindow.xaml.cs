@@ -22,7 +22,7 @@ namespace Documents_Тепляков
     public partial class MainWindow : Window
     {
         public static MainWindow init;
-        public List<DocumentContext> AllDocuments = new List<DocumentContext>().AllDocuments();
+        public List<DocumentContext> AllDocuments = new List<DocumentContext>();
 
         public MainWindow()
         {

@@ -21,7 +21,7 @@ namespace Documents_Тепляков.Classes
                 newDocument.src = dataDocuments.GetString(1);
                 newDocument.name = dataDocuments.GetString(2);
                 newDocument.user = dataDocuments.GetString(3);
-                newDocument.id_document = dataDocuments.GetInt32(4);
+                newDocument.id_document = dataDocuments.GetString(4);
                 newDocument.date = dataDocuments.GetDateTime(5);
                 newDocument.status = dataDocuments.GetInt32(6);
                 newDocument.vector = dataDocuments.GetString(7);

@@ -4,10 +4,10 @@ namespace Documents_Тепляков.Classes.Common
 {
     public class DBConnection
     {
-        public static readonly string Path = @"C:\Users\student-a210\Desktop\PR_21.accdb";
+        public static readonly string Path = @"C:\Users\kiril\OneDrive\Рабочий стол\ПР21\PR_21.accdb";
         public static OleDbConnection Connection()
         {
-            OleDbConnection oleDbConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + Path);
+            OleDbConnection oleDbConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.15.0; Data Source=" + Path);
             oleDbConnection.Open();
             return oleDbConnection;
         }

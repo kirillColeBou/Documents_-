@@ -9,7 +9,7 @@
       Title="Add">
 
     <Grid Background="White">
-        <Grid Background="Gray" Margin="0,0,0,350">
+        <Grid Background="Gray" Height="70" VerticalAlignment="Top">
             <Image Source="/Documents_Тепляков;component/Image/icon.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="50" Width="50"/>
             <Label Content="Добавить документ" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="22" Margin="70,5,0,0"/>
             <Button Click="Back" Content="Вернуться" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="25" Margin="0,10,10,0"/>
@@ -20,7 +20,8 @@
             <Label Content="Укажите наименование:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,10,0,0" FontSize="13"/>
             <TextBox x:Name="tb_name" VerticalAlignment="Top" Margin="200,37,10,10" Height="25"/>
             <Label Content="Укажите ответсвенного:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,64,0,0" FontSize="13"/>
-            <TextBox x:Name="tb_user" VerticalAlignment="Top" Margin="200,91,10,10" Height="25"/>
+            <ComboBox x:Name="tb_user" VerticalAlignment="Top" Margin="200,91,140,10" Height="25"/>
+            <Button Click="AddUser" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="25" Margin="0,91,10,10"/>
             <Label Content="Укажите код документа:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,118,0,0" FontSize="13"/>
             <TextBox x:Name="tb_id" VerticalAlignment="Top" Margin="200,145,10,10" Height="25"/>
             <Label Content="Укажите дату поступления:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,172,0,0" FontSize="13"/>
@@ -30,7 +31,7 @@
                 <TextBlock>Входящий</TextBlock>
                 <TextBlock>Исходящий</TextBlock>
             </ComboBox>
-            <Label Content="Укажите наравление:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,280,0,0" FontSize="13"/>
+            <Label Content="Укажите направление:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,280,0,0" FontSize="13"/>
             <TextBox x:Name="tb_vector" VerticalAlignment="Bottom" Margin="200,0,140,10" Height="25"/>
             <Button x:Name="bthAdd" Click="AddDocument" Content="Сохранить" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="120" Height="25" Margin="0,0,10,10"/>
         </Grid>

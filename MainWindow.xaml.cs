@@ -22,7 +22,7 @@ namespace Documents_Тепляков
     public partial class MainWindow : Window
     {
         public static MainWindow init;
-        public List<DocumentContext> AllDocuments = new List<DocumentContext>();
+        public List<DocumentContext> AllDocuments = new DocumentContext().AllDocuments();
 
         public MainWindow()
         {
@@ -33,7 +33,7 @@ namespace Documents_Тепляков
 
         public enum pages
         {
-            main, add
+            main, add, adduser
         }
 
         public void OpenPage(pages _pages)
@@ -42,6 +42,8 @@ namespace Documents_Тепляков
                 frame.Navigate(new Pages.Main());
             if (_pages == pages.add)
                 frame.Navigate(new Pages.Add());
+            if (_pages == pages.adduser)
+                frame.Navigate(new Pages.AddUser());
         }
     }
 }

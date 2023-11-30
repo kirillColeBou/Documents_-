@@ -36,15 +36,15 @@ namespace Documents_Тепляков.Classes
             if (Update)
             {
                 OleDbConnection connection = Common.DBConnection.Connection();
-                Common.DBConnection.Query("UPDATE [Документы]" +
-                                          "SET" + $"[Изображение] = '{this.src}', " +
-                                                  $"[Наименование] = '{this.name}', " +
-                                                  $"[Ответственный] = '{this.user}', " +
-                                                  $"[Код документа] = '{this.id_document}', " +
-                                                  $"[Дата поступления] = '{this.date.ToString("dd.MM.yyyy")}', " +
-                                                  $"[Статус] = '{this.status}', " +
-                                                  $"[Направление] = '{this.vector}', " +
-                                                  $"WHERE [Код] = {this.id}", connection);
+                Common.DBConnection.Query("UPDATE [Документы] " +
+                                          "SET " + $"[Изображение] = '{this.src}', " +
+                                                   $"[Наименование] = '{this.name}', " +
+                                                   $"[Ответственный] = '{this.user}', " +
+                                                   $"[Код документа] = '{this.id_document}', " +
+                                                   $"[Дата поступления] = '{this.date.ToString("dd.MM.yyyy")}', " +
+                                                   $"[Статус] = '{this.status}', " +
+                                                   $"[Направление] = '{this.vector}', " +
+                                                   $"WHERE [Код] = {this.id}", connection);
                 Common.DBConnection.CloseConnection(connection);
             }
             else
@@ -65,7 +65,7 @@ namespace Documents_Тепляков.Classes
                                                 $"'{this.user}', " +
                                                 $"'{this.id_document}', " +
                                                 $"'{this.date.ToString("dd.MM.yyyy")}', " +
-                                                $"'{this.status}', " +
+                                                $"{this.status}, " +
                                                 $"'{this.vector}')", connection);
                 Common.DBConnection.CloseConnection(connection);
             }

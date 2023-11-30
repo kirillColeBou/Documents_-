@@ -24,6 +24,7 @@ namespace Documents_Тепляков.Pages
     public partial class Add : Page
     {
         public Model.Document Document;
+        public Model.User User;
         public string s_src = "";
         public Add(Model.Document Document = null)
         {
@@ -37,7 +38,7 @@ namespace Documents_Тепляков.Pages
                     src.Source = new BitmapImage(new Uri(s_src));
                 }
                 tb_name.Text = this.Document.name;
-                tb_user.Text = this.Document.user;
+                tb_user.Text = this.User.user;
                 tb_id.Text = this.Document.id_document;
                 tb_date.Text = this.Document.date.ToString("dd.MM.yyyy");
                 tb_status.SelectedIndex = this.Document.status;
@@ -134,6 +135,11 @@ namespace Documents_Тепляков.Pages
             }
             MainWindow.init.AllDocuments = new DocumentContext().AllDocuments();
             MainWindow.init.OpenPage(MainWindow.pages.main);
+        }
+
+        private void AddUser(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.OpenPage(MainWindow.pages.adduser);
         }
     }
 }

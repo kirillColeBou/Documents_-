@@ -21,17 +21,21 @@ namespace Documents_Тепляков.Pages
     /// </summary>
     public partial class Main : Page
     {
+        public static Main main;
         public Main()
         {
             InitializeComponent();
             CreateUI();
+            main = this;
         }
 
         public void CreateUI()
         {
             parent.Children.Clear();
             foreach(DocumentContext document in MainWindow.init.AllDocuments)
+            {
                 parent.Children.Add(new Elements.Item(document));
+            }   
         }
 
         private void Exit(object sender, RoutedEventArgs e)

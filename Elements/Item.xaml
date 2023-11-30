@@ -11,8 +11,8 @@
         <Label x:Name="IName" Content="Наименование" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="100,10,0,0" FontSize="10"/>
         <Label x:Name="IUser" Content="Ответственный" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,45,0,80" FontSize="10"/>
         <Label x:Name="ICode" Content="Код документа" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,0,50" FontSize="10"/>
-        <Label x:Name="IDate" Content="Дата поступления" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,96,0" FontSize="10"/>
-        <Label x:Name="IStatus" Content="Статус" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,45,149,80" FontSize="10"/>
+        <Label x:Name="IDate" Content="Дата поступления" Foreground="Black" HorizontalAlignment="Right" Margin="0,10,96,117" FontSize="10"/>
+        <Label x:Name="IStatus" Content="Статус" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,149,81" FontSize="10"/>
         <Label x:Name="IDirect" Content="Направление" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,116,50" FontSize="10"/>
         <Button Click="EditDocument" Content="Изменить"   HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="80" Height="20" Margin="0,0,108,15" FontSize="10"/>
         <Button Click="DeleteDocument" Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="80" Height="20" Margin="0,0,15,15" FontSize="10"/>

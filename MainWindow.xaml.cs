@@ -23,6 +23,7 @@ namespace Documents_Тепляков
     {
         public static MainWindow init;
         public List<DocumentContext> AllDocuments = new DocumentContext().AllDocuments();
+        public List<UserContext> AllUsers = new UserContext().AllUsers();
 
         public MainWindow()
         {

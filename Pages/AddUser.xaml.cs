@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Documents_Тепляков.Classes;
+using Documents_Тепляков.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,16 @@ namespace Documents_Тепляков.Pages
     /// </summary>
     public partial class AddUser : Page
     {
-        public AddUser()
+        public User User;
+        public UserContext UserContext;
+        public AddUser(User User = null)
         {
             InitializeComponent();
+            if(User != null)
+            {
+                this.User = User;
+                tb_new_user.Text = this.User.user;
+            }
         }
 
         private void BackPage(object sender, RoutedEventArgs e)
@@ -32,12 +41,33 @@ namespace Documents_Тепляков.Pages
 
         private void AddUsers(object sender, RoutedEventArgs e)
         {
-
+            if (tb_new_user.Text.Length == 0)
+            {
+                MessageBox.Show("Укажите нового ответственного");
+                return;
+            }
+            if (User == null)
+            {
+                UserContext newUser = new UserContext();
+                newUser.user = tb_new_user.Text;
+                newUser.Save();
+                MessageBox.Show("Ответственный добавлен");
+            }
+            else
+            {
+                UserContext newUser = new UserContext();
+                newUser.user = tb_new_user.Text;
+                newUser.Save(true);
+                MessageBox.Show("Ответственный изменен");
+            }
+            MainWindow.init.AllUsers = new UserContext().AllUsers();
+            MainWindow.init.OpenPage(MainWindow.pages.main);
         }
 
         private void DeleteUser(object sender, RoutedEventArgs e)
         {
-
+            UserContext.Delete();
+            MainWindow.init.AllUsers = new UserContext().AllUsers();
         }
 
         private void UpdateUser(object sender, RoutedEventArgs e)

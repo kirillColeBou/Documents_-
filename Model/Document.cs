@@ -8,13 +8,13 @@ namespace Documents_Тепляков.Model
 {
     public class Document
     {
-        public int id { get; set; }
-        public string src { get; set; }
-        public string name { get; set; }
-        public string user { get; set; }
-        public string id_document { get; set; }
-        public DateTime date { get; set; }
-        public int status { get; set; }
-        public string vector { get; set; }
+        public int id;
+        public string src;
+        public string name;
+        public string user;
+        public string id_document;
+        public DateTime date; 
+        public int status;
+        public string vector;
     }
 }

@@ -27,15 +27,7 @@ namespace Documents_Тепляков.Classes
 
         public void Save(bool Update = false)
         {
-            if (Update)
-            {
-                OleDbConnection connection = Common.DBConnection.Connection();
-                Common.DBConnection.Query("UPDATE [Ответственные] " +
-                                          "SET " + $"[Ответственный] = '{this.user}' " +
-                                                   $"WHERE [Код] = {this.id}", connection);
-                Common.DBConnection.CloseConnection(connection);
-            }
-            else
+            if (!Update)
             {
                 OleDbConnection connection = Common.DBConnection.Connection();
                 Common.DBConnection.Query("INSERT INTO " +
@@ -45,14 +37,12 @@ namespace Documents_Тепляков.Classes
                                                 $"'{this.user}')", connection);
                 Common.DBConnection.CloseConnection(connection);
             }
-        }
-
-        public void Delete()
-        {
-            OleDbConnection connection = Common.DBConnection.Connection();
-            Common.DBConnection.Query($"DELETE FROM [Ответственный] WHERE [Код] = {this.id}", connection);
-            Common.DBConnection.CloseConnection(connection);
-
+            else
+            {
+                OleDbConnection connection = Common.DBConnection.Connection();
+                Common.DBConnection.Query($"UPDATE [Ответственные] SET [Ответственный] = '{this.user}' WHERE [Код] = {this.id}", connection);
+                Common.DBConnection.CloseConnection(connection);
+            }
         }
     }
 }

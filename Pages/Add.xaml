@@ -21,7 +21,7 @@
             <TextBox x:Name="tb_name" VerticalAlignment="Top" Margin="200,37,10,10" Height="25"/>
             <Label Content="Укажите ответсвенного:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,64,0,0" FontSize="13"/>
             <ComboBox x:Name="tb_user" VerticalAlignment="Top" Margin="200,91,140,10" Height="25"/>
-            <Button Click="AddUser" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="25" Margin="0,91,10,10"/>
+            <Button Click="AddUsers" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="25" Margin="0,91,10,10"/>
             <Label Content="Укажите код документа:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,118,0,0" FontSize="13"/>
             <TextBox x:Name="tb_id" VerticalAlignment="Top" Margin="200,145,10,10" Height="25"/>
             <Label Content="Укажите дату поступления:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,172,0,0" FontSize="13"/>

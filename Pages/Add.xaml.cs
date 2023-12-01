@@ -24,12 +24,12 @@ namespace Documents_Тепляков.Pages
     public partial class Add : Page
     {
         public Model.Document Document;
-        public Model.User User;
         public string s_src = "";
         public Add(Model.Document Document = null)
         {
             InitializeComponent();
-            if(Document != null)
+            CreateUser();
+            if (Document != null)
             {
                 this.Document = Document;
                 if (File.Exists(Document.src))
@@ -38,12 +38,21 @@ namespace Documents_Тепляков.Pages
                     src.Source = new BitmapImage(new Uri(s_src));
                 }
                 tb_name.Text = this.Document.name;
-                //tb_user.Text = this.User.user;
+                tb_user.SelectedItem = this.Document.user;
                 tb_id.Text = this.Document.id_document;
                 tb_date.Text = this.Document.date.ToString("dd.MM.yyyy");
                 tb_status.SelectedIndex = this.Document.status;
                 tb_vector.Text = this.Document.vector;
                 bthAdd.Content = "Изменить";
+            }
+        }
+
+        public void CreateUser()
+        {
+            tb_user.Items.Clear();
+            foreach(UserContext user in MainWindow.init.AllUsers)
+            {
+                tb_user.Items.Add(user.user);
             }
         }
 
@@ -78,11 +87,11 @@ namespace Documents_Тепляков.Pages
                 MessageBox.Show("Укажите наименование");
                 return;
             }
-            //if (tb_user.Text.Length == 0)
-            //{
-            //    MessageBox.Show("Укажите ответственного");
-            //    return;
-            //}
+            if (tb_user.Text.Length == 0)
+            {
+                MessageBox.Show("Укажите ответственного");
+                return;
+            }
             if (tb_id.Text.Length == 0)
             {
                 MessageBox.Show("Укажите код документа");
@@ -103,12 +112,12 @@ namespace Documents_Тепляков.Pages
                 MessageBox.Show("Укажите направление");
                 return;
             }
-            if(Document == null)
+            if (Document == null)
             {
                 DocumentContext newDocument = new DocumentContext();
                 newDocument.src = s_src;
                 newDocument.name = tb_name.Text;
-                //newDocument.user = tb_user.Text;
+                newDocument.user = tb_user.SelectedItem.ToString();
                 newDocument.id_document = tb_id.Text;
                 DateTime newDate = new DateTime();
                 DateTime.TryParse(tb_date.Text, out newDate);
@@ -122,8 +131,9 @@ namespace Documents_Тепляков.Pages
             {
                 DocumentContext newDocument = new DocumentContext();
                 newDocument.src = s_src;
+                newDocument.id = Document.id;
                 newDocument.name = tb_name.Text;
-                //newDocument.user = tb_user.Text;
+                newDocument.user = tb_user.SelectedItem.ToString();
                 newDocument.id_document = tb_id.Text;
                 DateTime newDate = new DateTime();
                 DateTime.TryParse(tb_date.Text, out newDate);
@@ -137,7 +147,7 @@ namespace Documents_Тепляков.Pages
             MainWindow.init.OpenPage(MainWindow.pages.main);
         }
 
-        private void AddUser(object sender, RoutedEventArgs e)
+        private void AddUsers(object sender, RoutedEventArgs e)
         {
             MainWindow.init.OpenPage(MainWindow.pages.adduser);
         }

@@ -7,13 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Data.OleDb;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.AccessControl;
+using System.Data.Common;
 
 namespace Documents_Тепляков.Pages
 {
@@ -24,18 +26,20 @@ namespace Documents_Тепляков.Pages
     {
         public User User;
         public UserContext UserContext;
+        public static OleDbConnection connection = Classes.Common.DBConnection.Connection();
+
         public AddUser(User User = null)
         {
             InitializeComponent();
-            AddUser_cB();
+            CreateUser();
             if (User != null)
             {
                 this.User = User;
-                cb_user.Text = this.User.user;
+                cb_user.SelectedItem = this.User.user;
             }
         }
 
-        public void AddUser_cB()
+        public void CreateUser()
         {
             cb_user.Items.Clear();
             foreach (UserContext user in MainWindow.init.AllUsers)
@@ -62,18 +66,20 @@ namespace Documents_Тепляков.Pages
                 newUser.user = tb_new_user.Text;
                 newUser.Save();
                 MessageBox.Show("Ответственный добавлен");
-            }
-            MainWindow.init.AllUsers = new UserContext().AllUsers();
-            AddUser_cB();
+                MainWindow.init.AllUsers = new UserContext().AllUsers();
+                CreateUser();
+                tb_new_user.Text = "";
+            } 
         }
 
         private void DeleteUser(object sender, RoutedEventArgs e)
         {
             if(tb_new_user.Text != "")
             {
-                UserContext.Delete();
+                Classes.Common.DBConnection.Query($"DELETE FROM [Ответственные] WHERE [Ответственный] = '{tb_new_user.Text}'", connection);
+                MessageBox.Show("Ответственный удален");
                 MainWindow.init.AllUsers = new UserContext().AllUsers();
-                AddUser_cB();
+                CreateUser();
             }
             else MessageBox.Show("Выбирите ответственного для удаления");
         }
@@ -86,15 +92,19 @@ namespace Documents_Тепляков.Pages
                 newUser.user = tb_new_user.Text;
                 newUser.Save(true);
                 MessageBox.Show("Ответственный изменен");
-                AddUser_cB();
+                MainWindow.init.AllUsers = new UserContext().AllUsers();
+                CreateUser();
             }
             else MessageBox.Show("Выбирите ответственного для изменения");
+            
         }
 
         private void Users(object sender, SelectionChangedEventArgs e)
         {
-            tb_new_user.Text = cb_user.SelectedItem.ToString();
-            return;
+            if (tb_new_user.Text == "")
+                tb_new_user.Text = cb_user.SelectedItem.ToString();
+            else
+                tb_new_user.Text = "";
         }
     }
 }

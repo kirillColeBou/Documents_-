@@ -10,6 +10,5 @@ namespace Documents_Тепляков.Interfaces
     {
         void Save(bool Update = false);
         List<Classes.UserContext> AllUsers();
-        void Delete();
     }
 }

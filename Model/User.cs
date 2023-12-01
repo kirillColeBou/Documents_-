@@ -8,7 +8,7 @@ namespace Documents_Тепляков.Model
 {
     public class User
     {
-        public int id { get; set; }
-        public string user { get; set; }
+        public int id;
+        public string user;
     }
 }

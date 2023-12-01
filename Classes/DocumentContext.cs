@@ -36,7 +36,8 @@ namespace Documents_Тепляков.Classes
             if (Update)
             {
                 OleDbConnection connection = Common.DBConnection.Connection();
-                Common.DBConnection.Query("UPDATE [Документы] " + "SET " + 
+                Common.DBConnection.Query("UPDATE [Документы] " + 
+                                          "SET " + 
                                           $"[Изображение] = '{this.src}', " +
                                           $"[Наименование] = '{this.name}', " +
                                           $"[Ответственный] = '{this.user}', " +

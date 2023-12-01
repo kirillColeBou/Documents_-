@@ -38,7 +38,7 @@ namespace Documents_Тепляков.Pages
                     src.Source = new BitmapImage(new Uri(s_src));
                 }
                 tb_name.Text = this.Document.name;
-                tb_user.Text = this.User.user;
+                //tb_user.Text = this.User.user;
                 tb_id.Text = this.Document.id_document;
                 tb_date.Text = this.Document.date.ToString("dd.MM.yyyy");
                 tb_status.SelectedIndex = this.Document.status;
@@ -78,11 +78,11 @@ namespace Documents_Тепляков.Pages
                 MessageBox.Show("Укажите наименование");
                 return;
             }
-            if (tb_user.Text.Length == 0)
-            {
-                MessageBox.Show("Укажите ответственного");
-                return;
-            }
+            //if (tb_user.Text.Length == 0)
+            //{
+            //    MessageBox.Show("Укажите ответственного");
+            //    return;
+            //}
             if (tb_id.Text.Length == 0)
             {
                 MessageBox.Show("Укажите код документа");
@@ -108,7 +108,7 @@ namespace Documents_Тепляков.Pages
                 DocumentContext newDocument = new DocumentContext();
                 newDocument.src = s_src;
                 newDocument.name = tb_name.Text;
-                newDocument.user = tb_user.Text;
+                //newDocument.user = tb_user.Text;
                 newDocument.id_document = tb_id.Text;
                 DateTime newDate = new DateTime();
                 DateTime.TryParse(tb_date.Text, out newDate);
@@ -123,7 +123,7 @@ namespace Documents_Тепляков.Pages
                 DocumentContext newDocument = new DocumentContext();
                 newDocument.src = s_src;
                 newDocument.name = tb_name.Text;
-                newDocument.user = tb_user.Text;
+                //newDocument.user = tb_user.Text;
                 newDocument.id_document = tb_id.Text;
                 DateTime newDate = new DateTime();
                 DateTime.TryParse(tb_date.Text, out newDate);

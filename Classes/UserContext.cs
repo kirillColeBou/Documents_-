@@ -16,9 +16,10 @@ namespace Documents_Тепляков.Classes
             OleDbDataReader dataUsers = Common.DBConnection.Query("SELECT * FROM [Ответственные]", connection);
             while (dataUsers.Read())
             {
-                DocumentContext newDocument = new DocumentContext();
-                newDocument.id = dataUsers.GetInt32(0);
-                newDocument.user = dataUsers.GetString(1);
+                UserContext newUser = new UserContext();
+                newUser.id = dataUsers.GetInt32(0);
+                newUser.user = dataUsers.GetString(1);
+                allUsers.Add(newUser);
             }
             Common.DBConnection.CloseConnection(connection);
             return allUsers;
@@ -30,7 +31,7 @@ namespace Documents_Тепляков.Classes
             {
                 OleDbConnection connection = Common.DBConnection.Connection();
                 Common.DBConnection.Query("UPDATE [Ответственные] " +
-                                          "SET " + $"[Ответственный] = '{this.user}', " +
+                                          "SET " + $"[Ответственный] = '{this.user}' " +
                                                    $"WHERE [Код] = {this.id}", connection);
                 Common.DBConnection.CloseConnection(connection);
             }

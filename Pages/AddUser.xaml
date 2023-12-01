@@ -17,7 +17,7 @@
         <Grid Margin="0,70,0,0">
             <TextBox x:Name="tb_new_user" VerticalAlignment="Top" Margin="10,40,140,10" Height="25"/>
             <Button Click="AddUsers" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="25" Margin="0,40,10,0"/>
-            <ComboBox x:Name="cb_user" VerticalAlignment="Top" Margin="10,90,270,10" Height="25"/>
+            <ComboBox x:Name="cb_user" VerticalAlignment="Top" Margin="10,90,270,10" Height="25" SelectionChanged="Users"/>
             <Button Click="UpdateUser" Content="Изменить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="25" Margin="0,90,140,0"/>
             <Button Click="DeleteUser" Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="25" Margin="0,90,10,0"/>
         </Grid>

@@ -125,6 +125,7 @@ namespace Documents_Тепляков.Pages
                 newDocument.status = tb_status.SelectedIndex;
                 newDocument.vector = tb_vector.Text;
                 newDocument.Save();
+                MessageBox.Show(newDocument.id.ToString());
                 MessageBox.Show("Документ добавлен");
             }
             else
@@ -141,6 +142,7 @@ namespace Documents_Тепляков.Pages
                 newDocument.status = tb_status.SelectedIndex;
                 newDocument.vector = tb_vector.Text;
                 newDocument.Save(true);
+                MessageBox.Show(newDocument.id.ToString());
                 MessageBox.Show("Документ изменен");
             }
             MainWindow.init.AllDocuments = new DocumentContext().AllDocuments();

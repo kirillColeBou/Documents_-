@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Security.AccessControl;
 using System.Data.Common;
+using Documents_Тепляков.Interfaces;
 
 namespace Documents_Тепляков.Pages
 {
@@ -26,17 +27,11 @@ namespace Documents_Тепляков.Pages
     {
         public User User;
         public UserContext UserContext;
-        public static OleDbConnection connection = Classes.Common.DBConnection.Connection();
 
         public AddUser(User User = null)
         {
             InitializeComponent();
             CreateUser();
-            if (User != null)
-            {
-                this.User = User;
-                cb_user.SelectedItem = this.User.user;
-            }
         }
 
         public void CreateUser()
@@ -69,13 +64,14 @@ namespace Documents_Тепляков.Pages
                 MainWindow.init.AllUsers = new UserContext().AllUsers();
                 CreateUser();
                 tb_new_user.Text = "";
-            } 
+            }
         }
 
         private void DeleteUser(object sender, RoutedEventArgs e)
         {
             if(tb_new_user.Text != "")
             {
+                OleDbConnection connection = Classes.Common.DBConnection.Connection();
                 Classes.Common.DBConnection.Query($"DELETE FROM [Ответственные] WHERE [Ответственный] = '{tb_new_user.Text}'", connection);
                 MessageBox.Show("Ответственный удален");
                 MainWindow.init.AllUsers = new UserContext().AllUsers();
@@ -90,6 +86,13 @@ namespace Documents_Тепляков.Pages
             {
                 UserContext newUser = new UserContext();
                 newUser.user = tb_new_user.Text;
+
+                OleDbConnection connection = Classes.Common.DBConnection.Connection();
+                OleDbDataReader reader = Classes.Common.DBConnection.Query($"SELECT [Код] FROM [Ответственные] WHERE [Ответственный] = '{cb_user.SelectedItem}'", connection);
+                while(reader.Read())
+                    newUser.id = reader.GetInt32(0);
+                Classes.Common.DBConnection.CloseConnection(connection);
+
                 newUser.Save(true);
                 MessageBox.Show("Ответственный изменен");
                 MainWindow.init.AllUsers = new UserContext().AllUsers();
